@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:exchangeApp.ViewModels"
+             x:Class="exchangeApp.MainPage">
+
+    <ContentPage.BindingContext>
+        <viewModels:MainPageViewModel x:Name="ViewModel" />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid Padding="10">
+            <CollectionView ItemsSource="{Binding Rates}"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            SelectionMode="Single"
+                            SelectionChanged="OnSelectionChanged">
+                <CollectionView.Header>
+                    <Grid
+                        HorizontalOptions="FillAndExpand"
+                        ColumnSpacing="7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Валюта"
+                               Grid.Column="0"
+                               FontAttributes="Bold"
+                               HorizontalOptions="FillAndExpand"/>
+                        <Label Text="Назва"
+                               Grid.Column="1"
+                               FontAttributes="Bold"
+                               HorizontalOptions="FillAndExpand"/>
+                        <Label Text="Курс"
+                               Grid.Column="2"
+                               FontAttributes="Bold"
+                               HorizontalOptions="FillAndExpand"/>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroupList>
+                                <VisualStateGroup Name="CommonStates">
+                                    <VisualState Name="Normal">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="Transparent"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                    <VisualState Name="Selected">
+                                        <VisualState.Setters>
+                                            <Setter Property="BackgroundColor" Value="LightSkyBlue"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateGroupList>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            Padding="5"
+                            HorizontalOptions="FillAndExpand"
+                            ColumnSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Cc}" Grid.Column="0" HorizontalOptions="FillAndExpand"/>
+                            <Label Text="{Binding Txt}" Grid.Column="1" HorizontalOptions="FillAndExpand"/>
+                            <Label Text="{Binding Rate}" Grid.Column="2" HorizontalOptions="FillAndExpand"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
