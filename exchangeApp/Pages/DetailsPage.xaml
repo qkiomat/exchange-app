@@ -10,6 +10,7 @@
             <Label Text="{Binding Cc}" FontSize="24" FontAttributes="Bold" />
             <Label Text="{Binding Txt}" FontSize="18" />
             <Label Text="{Binding Rate, StringFormat='Курс: {0:F2}'}" FontSize="18" />
+            <Label Text="{Binding ExchangeDate}" FontSize="18" />
             <!-- Додайте інші деталі за потреби -->
         </StackLayout>
         <!-- Кнопка внизу -->
